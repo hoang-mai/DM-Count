@@ -65,6 +65,7 @@ def main(input_dataset_path, output_dataset_path, min_size=512, max_size=2048):
                         im, points = generate_data(im_path, min_size, max_size)
                         im_save_path = os.path.join(sub_save_dir, name)
                         im.save(im_save_path)
+                        # Tạo đường dẫn để lưu trữ điểm dữ liệu (points) dưới dạng tệp numpy (npy) thay vì định dạng ảnh JPEG.
                         gd_save_path = im_save_path.replace('jpg', 'npy')
                         np.save(gd_save_path, points)
         else:
