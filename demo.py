@@ -9,8 +9,7 @@ import numpy as np
 import scipy
 
 model_path = "pretrained_models/model_qnrf.pth"
-url = "https://drive.google.com/uc?id=1nnIHPaV9RGqK8JHL645zmRvkNrahD9ru"
-gdown.download(url, model_path, quiet=False)
+
 
 device = torch.device('cpu')  # device can be "cpu" or "gpu"
 
@@ -46,7 +45,7 @@ examples = [
     ["example_images/2.png"],
     ["example_images/1.png"],
 ]
-inputs = gr.inputs.Image(label="Image of Crowd")
-outputs = [gr.outputs.Image(label="Predicted Density Map"), gr.outputs.Label(label="Predicted Count")]
+inputs = gr.Image(label="Image of Crowd")
+outputs = [gr.Image(label="Predicted Density Map"), gr.Label(label="Predicted Count")]
 gr.Interface(fn=predict, inputs=inputs, outputs=outputs, title=title, description=desc, examples=examples,
              allow_flagging=False).launch()
